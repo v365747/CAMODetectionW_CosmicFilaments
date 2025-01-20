@@ -1,6 +1,26 @@
-# CAMODetectionW_CosmicFilaments
-This repository contains our data-processing scripts and code used to transform radio-data using FITS images using FtBg to detect Camouflaged objects in RGB format.
-Flexible Image Transport System (FITS) data format is used by Astronomers to analyze data in radio-wave and microwave formats. From https://www.loc.gov/preservation/digital/formats/fdd/fdd000317.shtml :
-The term "image" in the standard's name is loosely applied and FITS files often contain only non-image data. Astronomers view their images as data for analysis rather than simply as pictures to look at. From its beginning, FITS was seen as a transport format for more than a still image intended for printing or viewing in two dimensions. FITS was designed to facilitate the unambiguous transmission of n-dimensional regularly spaced data arrays, an n-cube. These multi-dimensional arrays may be 1-D spectra, 2-D images or data cubes of three or more dimensions. Two-dimensional tables containing rows and columns of data can also be stored in a FITS file. The substantial use of FITS for data that even astronomers would not class as image data led to consideration to change the full name for the FITS format, but the proposal was rejected. For the same reason, in this resource, FITS is categorized primarily as a dataset format, with use for image data as secondary.
+# CS231N-final-project
 
-There is no assumption in astronomical analysis or in FITS of a defined colorspace (such as RGB). Astronomy images are often rendered in false color in order to make infra-red and ultra-violet radiation visible
+## Description   
+This project aims to identify camouflaged objects of different shapes in complete harmony with their surrounding. The YOLOv8 algorithm operates by extracting features and applying non-maximum suppression to detect overlapping bounding boxes. On the COD10K dataset, YOLOv8 achieved a mean average precision (mAP) of 18.2% in our training dataset. The CAMO dataset, converted to YOLO1.1 format using CVAT.AI, also showed poor training performance with a mean precision (mAP50) of 3.89%, which we believe is due to issues with identifying the center in our bounding boxes for ground truth. We are working on addressing this issue. Using these two datasets, we explored different approaches to improve performance, including edge detection with Fourier transform, wavelet transforms, shape separation, and transfer learning. We achieved over 50% mAP50 by continuing to train the entire YOLOv8 small model with the COD10K and CAMO-COCO datasets, and over 40% mAP50 by performing trans- fer learning on the YOLOv8 nano model.
+
+## How to run   
+1, install dependencies   
+```bash
+# clone project   
+git clone https://github.com/LilyLiu0719/CS231N-final-project.git
+
+# install project   
+cd CS231N-final-project
+pip install ultralytics
+pip install -r requirements.txt
+
+# module folder
+cd yolov8
+```
+2. Download the weights from [Link](https://drive.google.com/file/d/1cfG-RFi_SR2JL3J-BWcgApmCR8YP_ycV/view?usp=drive_link)
+
+3. Run module 
+```bash
+python main.py    
+```
+You might need to modify the path and mode in `main.py`
